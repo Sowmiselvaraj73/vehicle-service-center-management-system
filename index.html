@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Service Center</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <div id="loginSection" class="box">
+    <h1 class="title">VEHICLE SERVICE CENTER MANAGEMENT SYSTEM</h1>
+
+    <h2>LOGIN PAGE</h2>
+
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Enter Username">
+      <input type="email" id="email" placeholder="Enter Email">
+      <input type="password" id="password" placeholder="Enter Password">
+      <button type="submit">Login</button>
+    </form>
+
+    <a href="#" onclick="forgotPassword()">Forgot Password?</a>
+  </div>
+
+  <div id="successSection" class="box hidden">
+    <div class="success-message">
+      <h2>You have logged in successfully</h2>
+
+      <button onclick="goToDashboard()">Move to Dashboard</button>
+      <button onclick="backToLogin()">Back to Login</button>
+    </div>
+  </div>
+
+  <div id="dashboardSection" class="box hidden">
+    <h2>Dashboard</h2>
+
+    <button onclick="goToCustomerDetails()">Customer Details</button>
+    <button onclick="goToVehicleDetails()">Vehicle Details</button>
+    <button onclick="goToServicePreferences()">Service Preferences</button>
+    <button onclick="goToServiceStatus()">Service Status</button>
+    <button onclick="goToPayment()">Payment</button>
+    <button onclick="backToLogin()">Logout</button>
+  </div>
+
+  <div id="customerDetailsSection" class="form-container hidden">
+    <h2>Customer Details</h2>
+
+    <form>
+      <input type="text" placeholder="Customer Name">
+      <input type="email" placeholder="Email">
+      <input type="text" placeholder="Phone Number">
+      <input type="text" placeholder="Address">
+
+      <button type="submit">Save Customer</button>
+
+      <button type="button" onclick="goToDashboardFromCustomer()">
+        Back
+      </button>
+    </form>
+  </div>
+
+  <div id="vehicleDetailsSection" class="form-container hidden">
+    <h2>Vehicle Details</h2>
+
+    <form>
+      <input type="text" placeholder="Vehicle Model">
+      <input type="text" placeholder="License Plate">
+
+      <select>
+        <option>Car</option>
+        <option>Bike</option>
+        <option>Truck</option>
+      </select>
+
+      <button type="submit">Save Vehicle</button>
+
+      <button type="button" onclick="goToDashboardFromVehicle()">
+        Back
+      </button>
+    </form>
+  </div>
+
+  <div id="servicePreferencesSection" class="form-container hidden">
+    <h2>Service Preferences</h2>
+
+    <form>
+      <select>
+        <option>General Service</option>
+        <option>Oil Change</option>
+        <option>Engine Check</option>
+      </select>
+
+      <input type="date">
+      <input type="time">
+
+      <button type="submit">Save Service</button>
+
+      <button type="button" onclick="goToDashboardFromService()">
+        Back
+      </button>
+    </form>
+  </div>
+
+  <div id="serviceStatusSection" class="form-container hidden">
+    <h2>Service Status</h2>
+
+    <form>
+      <select id="serviceStatus" onchange="toggleReschedule()">
+        <option>Pending</option>
+        <option>In Progress</option>
+        <option>Completed</option>
+        <option>Delayed</option>
+      </select>
+
+      <div id="rescheduleContainer" class="hidden">
+        <input type="datetime-local">
+      </div>
+
+      <button type="submit">Update Status</button>
+
+      <button type="button" onclick="goToDashboardFromStatus()">
+        Back
+      </button>
+    </form>
+  </div>
+
+  <div id="paymentSection" class="form-container hidden">
+    <h2>Payment</h2>
+
+    <form>
+      <input type="number" id="serviceCharge" value="500" readonly>
+      <input type="number" id="taxes" placeholder="Taxes">
+      <input type="number" id="discounts" placeholder="Discount">
+      <input type="number" id="totalAmount" readonly>
+
+      <select id="paymentMode" onchange="displayPaymentDetails()">
+        <option value="">Select</option>
+        <option value="Cash">Cash</option>
+        <option value="Card">Card</option>
+        <option value="UPI">UPI</option>
+      </select>
+
+      <div id="cardDetails" class="hidden">
+        <input type="text" placeholder="Card Number">
+      </div>
+
+      <div id="upiDetails" class="hidden">
+        <input type="text" placeholder="UPI ID">
+      </div>
+
+      <button type="button" onclick="calculateTotal()">
+        Calculate Total
+      </button>
+
+      <button type="submit">Confirm Payment</button>
+
+      <button type="button" onclick="goToDashboardFromPayment()">
+        Back
+      </button>
+    </form>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
